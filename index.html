@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quant-Orbital | Mission Control Live Demo</title>
+    <style>
+        body { background-color: #0f172a; color: #f8fafc; font-family: 'Segoe UI', system-ui, sans-serif; margin: 40px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #38bdf8; font-weight: 300; border-bottom: 1px solid #334155; padding-bottom: 10px; margin-bottom: 5px; }
+        .meta { color: #94a3b8; font-size: 14px; margin-bottom: 30px; }
+        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 30px; }
+        .card { background-color: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #475569; text-align: center; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); }
+        .status { font-weight: bold; margin-top: 15px; padding: 6px 12px; border-radius: 4px; display: inline-block; font-size: 14px; }
+        .operational { background-color: #10b981; color: white; }
+        .compromised { background-color: #ef4444; color: white; animation: pulse 1.5s infinite; }
+        .console { background-color: #020617; color: #10b981; font-family: 'Fira Code', monospace; padding: 20px; border-radius: 6px; margin-top: 40px; border: 1px solid #1e293b; min-height: 100px; white-space: pre-line; line-height: 1.6; }
+        .actions { margin-top: 30px; display: flex; gap: 15px; }
+        .btn { border: none; padding: 14px 28px; font-size: 16px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.2s; display: flex; align-items: center; gap: 8px; }
+        .btn-attack { background-color: #ef4444; color: white; }
+        .btn-attack:hover { background-color: #dc2626; }
+        .btn-reset { background-color: #475569; color: white; }
+        .btn-reset:hover { background-color: #334155; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌌 Quant-Orbital - Constellation Mesh Control Panel</h1>
+        <div class="meta">Post-Quantum Cryptography (NIST ML-DSA-65) & Byzantine Fault Tolerance Live Frontend Simulation</div>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>🛰️ SAT-ALPHA</h3>
+                <div class="status operational">OPERATIONAL</div>
+            </div>
+            <div class="card" id="sat-bravo-card">
+                <h3>🛰️ SAT-BRAVO</h3>
+                <div class="status operational" id="sat-bravo-status">OPERATIONAL</div>
+            </div>
+            <div class="card">
+                <h3>🛰️ SAT-CHARLIE</h3>
+                <div class="status operational">OPERATIONAL</div>
+            </div>
+            <div class="card">
+                <h3>🛰️ SAT-DELTA</h3>
+                <div class="status operational">OPERATIONAL</div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-attack" onclick="triggerQuantumAttack()">🚀 Inject Quantum Cyber Attack (Malicious Uplink)</button>
+            <button class="btn btn-reset" onclick="resetConstellation()">🔄 Reset Constellation Status</button>
+        </div>
+
+        <div class="console" id="log-console">
+            [SYSTEM LOG] Constellation stabilized in low Earth orbit (LEO). 
+            [SYSTEM LOG] Secure post-quantum cryptographic mesh channels established using Dilithium parameters.
+            [SYSTEM LOG] Project Panama off-heap memory buffer initialized with zero GC allocation footprint.
+        </div>
+    </div>
+
+    <script>
+        function triggerQuantumAttack() {
+            const statusBadge = document.getElementById('sat-bravo-status');
+            const consoleBox = document.getElementById('log-console');
+            
+            statusBadge.innerText = "COMPROMISED / ISOLATED";
+            statusBadge.className = "status compromised";
+            
+            consoleBox.innerHTML = `[SYSTEM LOG] Uplink command intercepted. Scanning cryptographic packet identity...
+            [⚠️ WARNING] Quantum-tampered digital signature algorithm variation detected on SAT-BRAVO. PQC integrity verification FAILED!
+            [⚙️ BFT ENGINE] Broadasting telemetry mismatch flag to peer nodes. 
+            [⚙️ BFT ENGINE] SAT-ALPHA, SAT-CHARLIE, and SAT-DELTA achieved 3/4 decentralized Byzantine Consensus.
+            [🚨 ALERT] permanent cryptographic isolation triggered. SAT-BRAVO is successfully quarantined from the orbital network mesh!`;
+        }
+
+        function resetConstellation() {
+            const statusBadge = document.getElementById('sat-bravo-status');
+            const consoleBox = document.getElementById('log-console');
+            
+            statusBadge.innerText = "OPERATIONAL";
+            statusBadge.className = "status operational";
+            
+            consoleBox.innerHTML = `[SYSTEM LOG] Constellation stabilized in low Earth orbit (LEO). 
+            [SYSTEM LOG] Secure post-quantum cryptographic mesh channels established using Dilithium parameters.
+            [SYSTEM LOG] Project Panama off-heap memory buffer initialized with zero GC allocation footprint.`;
+        }
+    </script>
+</body>
+</html>
