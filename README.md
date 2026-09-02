@@ -100,6 +100,7 @@ Your star drives continuous optimization updates to this repository. ⭐
 ## 👤 Author
 
 * **Yağız Yağlı** - [@yagizyagli](https://github.com/yagizyagli)
+* **Live Demo** -   [@quant-orbital](https://yagizyagli.github.io/quant-orbital/)
 
 ---
 
