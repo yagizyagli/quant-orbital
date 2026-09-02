@@ -1,4 +1,4 @@
-name: Quant-Orbital CI/CD Pipeline
+name: Quant-Orbital Single-Root CI/CD
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-and-test:
-    name: Build with GraalVM Native Image
+    name: Build Native Executable via GraalVM
     runs-on: ubuntu-latest
 
     steps:
@@ -31,8 +31,5 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Compile and Verify Application Code
-        run: mvn clean verify
-
-      - name: Build Native Satellite Executables
-        run: mvn package -Pnative --file pom.xml
+      - name: Compile and Build Native Binary
+        run: mvn clean package -Pnative
