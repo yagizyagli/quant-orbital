@@ -22,3 +22,15 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# --- GraalVM Native Image & PQC Artifacts ---
+*.exe
+*.dll
+*.so
+*.dylib
+*.native
+quant-orbital-core-native
+quant-orbital-mesh-native
+config/certs/*.pem
+config/certs/*.key
+
