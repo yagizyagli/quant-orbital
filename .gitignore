@@ -23,6 +23,13 @@
 hs_err_pid*
 replay_pid*
 
+
+# --- Quant-Orbital Custom Artifacts ---
+*.native
+quant-orbital-core-native
+quant-orbital-mesh-native
+
+
 # --- GraalVM Native Image & PQC Artifacts ---
 *.exe
 *.dll
