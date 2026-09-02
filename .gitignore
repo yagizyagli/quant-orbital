@@ -23,8 +23,6 @@
 hs_err_pid*
 replay_pid*
 
-
-
 # --- GraalVM Native Image & PQC Artifacts ---
 *.exe
 *.dll
@@ -35,7 +33,6 @@ quant-orbital-core-native
 quant-orbital-mesh-native
 config/certs/*.pem
 config/certs/*.key
-
 
 # --- Quant-Orbital Custom Artifacts ---
 *.native
