@@ -1,34 +1,27 @@
 package com.quantorbital.core.crypto;
 
-import org.bouncycastle.pqc.crypto.mldsa.MLDSAKeyGenerationParameters;
-import org.bouncycastle.pqc.crypto.mldsa.MLDSAKeyPairGenerator;
-import org.bouncycastle.pqc.crypto.mldsa.MLDSAParameters;
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
+import org.bouncycastle.pqc.jcajce.provider.BouncyCastlePQCProvider;
+import org.bouncycastle.pqc.jcajce.spec.DilithiumParameterSpec;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
 import java.security.SecureRandom;
+import java.security.Security;
 
-/**
- * Core cryptographic manager responsible for generating NIST-standard ML-DSA 
- * (Dilithium) post-quantum key pairs for satellite authentication.
- */
 public class PqcKeyManager {
-
-    private final MLDSAKeyPairGenerator keyPairGenerator;
-
-    public PqcKeyManager() {
-        this.keyPairGenerator = new MLDSAKeyPairGenerator();
-        // ML-DSA-65 provides security roughly equivalent to AES-192, optimal for space constraints
-        MLDSAKeyGenerationParameters params = new MLDSAKeyGenerationParameters(
-            new SecureRandom(), 
-            MLDSAParameters.ml_dsa_65
-        );
-        this.keyPairGenerator.init(params);
+    static {
+        if (Security.getProvider(BouncyCastlePQCProvider.PROVIDER_NAME) == null) {
+            Security.addProvider(new BouncyCastlePQCProvider());
+        }
     }
 
-    /**
-     * Generates a quantum-resistant asymmetric key pair.
-     * @return AsymmetricCipherKeyPair containing PQC public and private components.
-     */
-    public AsymmetricCipherKeyPair generateSpaceKeyPair() {
-        return keyPairGenerator.generateKeyPair();
+    public KeyPair generateSpaceKeyPair() {
+        try {
+            KeyPairGenerator kpg = KeyPairGenerator.getInstance("Dilithium", BouncyCastlePQCProvider.PROVIDER_NAME);
+            // Strictly passing the exact DilithiumParameterSpec required by BouncyCastle 1.78+
+            kpg.initialize(DilithiumParameterSpec.dilithium3, new SecureRandom()); 
+            return kpg.generateKeyPair();
+        } catch (Exception e) {
+            throw new SecurityException("Failed to generate PQC Key Pair via JCA provider", e);
+        }
     }
 }

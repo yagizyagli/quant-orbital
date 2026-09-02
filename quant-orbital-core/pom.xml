@@ -14,7 +14,6 @@
     <artifactId>quant-orbital-core</artifactId>
 
     <dependencies>
-        <!-- Post-Quantum Cryptography Libraries -->
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcpkix-jdk18on</artifactId>

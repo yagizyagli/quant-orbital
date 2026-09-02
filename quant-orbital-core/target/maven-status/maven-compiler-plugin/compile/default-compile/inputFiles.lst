@@ -1,0 +1,5 @@
+/workspaces/quant-orbital/quant-orbital-core/src/main/java/com/quantorbital/core/crypto/CommandCryptographyEngine.java
+/workspaces/quant-orbital/quant-orbital-core/src/main/java/com/quantorbital/core/crypto/PqcKeyManager.java
+/workspaces/quant-orbital/quant-orbital-core/src/main/java/com/quantorbital/core/memory/NativeSpaceMemoryBuffer.java
+/workspaces/quant-orbital/quant-orbital-core/src/main/java/com/quantorbital/core/model/SpaceCommand.java
+/workspaces/quant-orbital/quant-orbital-core/src/main/java/com/quantorbital/core/model/TelemetryPacket.java

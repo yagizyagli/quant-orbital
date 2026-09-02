@@ -1,0 +1,5 @@
+com/quantorbital/core/crypto/CommandCryptographyEngine.class
+com/quantorbital/core/model/TelemetryPacket.class
+com/quantorbital/core/model/SpaceCommand.class
+com/quantorbital/core/crypto/PqcKeyManager.class
+com/quantorbital/core/memory/NativeSpaceMemoryBuffer.class
