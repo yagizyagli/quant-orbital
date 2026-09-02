@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.quantorbital.mesh.grpc";
+option java_outer_classname = "MeshGatewayProto";
+
+package quantorbital.mesh;
+
+// Mission-critical network services provided by each satellite node
+service SatelliteMeshService {
+  // Uplink channel for ground control or peer satellites to send secure commands
+  rpc DeliverSpaceCommand (CommandRequest) returns (CommandResponse);
+  
+  // Real-time peer-to-peer broadcast to alert the constellation about rogue nodes
+  rpc BroadcastSecurityAlert (AlertRequest) returns (AlertResponse);
+}
+
+message CommandRequest {
+  int64 command_id = 1;
+  string target_satellite_id = 2;
+  string operation_type = 3;
+  string timestamp = 4;
+  bytes payload = 5;
+  bytes pqc_signature = 6; // NIST ML-DSA Post-Quantum Digital Signature
+}
+
+message CommandResponse {
+  int64 command_id = 1;
+  bool is_executed = 2;
+  string status_message = 3;
+}
+
+message AlertRequest {
+  string reporting_satellite_id = 1;
+  string compromised_node_id = 2;
+  string threat_level = 3; // e.g., "CRITICAL_COMPROMISE", "REPLAY_ATTEMPT"
+  string timestamp = 4;
+  bytes forensic_evidence = 5; // The signed corrupt data as proof
+}
+
+message AlertResponse {
+  bool alert_acknowledged = 1;
+}
